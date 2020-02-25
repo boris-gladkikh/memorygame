@@ -1,0 +1,101 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    background-color: grey;
+    display: flex;
+
+}
+
+
+
+.memory_game {
+    width:640px;
+    height: 640px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    perspective: 1000px;
+  
+}
+
+.title {
+    width: 100%;
+    height: 33%;
+    text-align: center;
+    color: white;
+    position: relative;
+    font-size: 125%;
+}
+.title > h1 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: darkred;
+    font-size: 200%;
+}
+
+.button {
+    padding: 5px;
+    background: darkred;
+    color: white;
+}
+
+
+
+.memory_card {
+    width:calc(25% - 10px);
+    height: calc(33.333% - 10px);
+    position: relative;
+    margin:5px;
+    transform: scale(1);
+    transform-style: preserve-3d;
+    transition: transform .5s;
+ 
+}
+
+.memory_card:active {
+    transform: scale(.97);
+    transition: transform .2s;
+
+}
+
+.memory_card.flip {
+    transform: rotateY(180deg);
+}
+
+
+
+.front-face,
+.back-face {
+    width:100%;
+    height: 100%;
+    padding:10px;
+    position: absolute;
+    border-radius: 5px;
+    background: darkred;
+    object-fit: cover;
+    backface-visibility: hidden;
+
+    
+}
+
+.front-face {
+    transform: rotateY(180deg);
+
+}
+
+footer {
+    
+    width: 100%;
+    height: 20%;
+    text-align: center;
+    margin-top: 10px;
+    color: white;
+    position: absolute;
+    font-size: 125%;
+    top: 1000px;
+    
+}
