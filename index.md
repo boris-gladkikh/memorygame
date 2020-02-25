@@ -9,7 +9,7 @@
 </head>
 <body>
 
-
+ 
 
    <section class="memory_game">
     <div class="title"><h1>CAGED MEMORIES</h1><br>
@@ -20,7 +20,6 @@
         Least Moves: <span class="topscore">100</span><br><br>
         <button type="button" class="button" id="newgamebutton">New Game</button>
     </div>
-
   
     <div class="memory_card"data-name="conair">
         <img class ="front-face" src="img/conaircage.jpg" alt="con air cage">
@@ -70,8 +69,6 @@
         <img class ="front-face" src="img/vampirecage.jpg" alt="vampire cage">
         <img class = "back-face" src="img/backface.jpg" alt="Back face">
     </div>
- 
-
   
    </section>
    <footer> 

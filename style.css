@@ -99,3 +99,17 @@ footer {
     top: 1000px;
     
 }
+
+.victory {
+    display: flex;
+    height:650px;
+    position: absolute;
+    top: 210px;
+    padding-top: 40%;
+    width: 650px;
+    background-color: red;
+    font-size: 300%;
+    text-align: center;
+    justify-content: center;
+    color: white;
+}
