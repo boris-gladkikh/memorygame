@@ -6,8 +6,27 @@ var firstCard,secondCard;
 var currentScore = 0;
 var matchCounter = 0;
 
+var victoryScreen = document.createElement("div");
+victoryScreen.classList.add("victory");
+victoryScreen.innerText = "VICTORY!";
+var gameContainer = document.querySelector(".memory_game");
+var topScore = document.querySelector(".topscore");
+var topScoreAsNumber = Number(topScore.innerText);
+console.log(topScore.innerText);
+
+window.onload = function() {
+    // var localStorageTopScore = window.localStorage.getItem("topscore");
+    // console.log(localStorageTopScore);
+    // if (localStorageTopScore !== null) {
+    //     topScore.innerText = localStorageTopScore;
+    // } else {
+    //     topScore.innerText = 200;
+    // }
+};
+
+
 //flip card section
-function flipCard(){
+function flipCard() {
     if (lockBoard) return;
     if (this === firstCard) return;
    
@@ -17,20 +36,18 @@ function flipCard(){
     scoreValue.innerText = currentScore;
    
      
-     if (!hasflippedCard) {
+    if (!hasflippedCard) {
         //first click!
         hasflippedCard = true;
-        firstCard = this;
-    
-       
+        firstCard = this;   
     }
     else {
         //second click, second card
         hasflippedCard = false;
         secondCard = this;
         checkForMatch(); 
+    }
 
-    } 
     if (allFlipped()) {
         endGame();
     }  
@@ -103,14 +120,8 @@ newGameButton.addEventListener("click",function(event){
 
 //append victory class to the memorygame dom, which is a big red box with white text that says "victory"
 
-var victoryScreen = document.createElement("div");
-victoryScreen.classList.add("victory");
-victoryScreen.innerText = "VICTORY!";
-var gameContainer = document.querySelector(".memory_game");
-var topScore = document.querySelector(".topscore")
-
 //checks to see if the game is over- if all classes a re  flipped, run endGame function. uses a match counter above - 6 matches is game over. 
-var allFlipped = function(){
+var allFlipped = function() {
     if(matchCounter === 6) {
         return true;
     }
@@ -118,39 +129,36 @@ var allFlipped = function(){
 };
 
 
+function newHiScore() {
+    // var topScoreNewHiScore = topScore;
+     var topScoreNewHiScore = topScoreAsNumber
+    if (currentScore < topScoreNewHiScore)  {
+        topScore.innerText = currentScore;
+       
+         alert("NEW HIGH SCORE! you helped Mr. Cage in only " + currentScore + " Moves! You magnificent bastard!");
+      };
+}
 
 
 
 //endGame function, executed when allFLipped is true
-function endGame(){
-    setTimeout(function(){
-        alert("YOU DID IT! Nicolas Cage remembers EVERYTHING. He knows ALL. ")
-    },500);
+function endGame() {
+    setTimeout(function() {
+        alert("YOU DID IT! Nicolas Cage has regained his memories. He's now making sequels to Raising Arizona, Con-Air and FACE/OFF. ");
+        newHiScore();
+        window.localStorage.setItem("topscore", topScoreAsNumber);
+        
+    }, 500);
 
     gameContainer.appendChild(victoryScreen);
 
-    //console.log(currentScore < Number(topScore.innerText)) 
-    //above LOGS TRUE, but below code does NOT run ---- Why???????***************
-
-    if (currentscore < Number(topScore.innerText) ) {
-        topScore.innerText = currentScore;
-        alert("NEW HIGH SCORE! you helped Mr. Cage in only " + currentScore + "Moves! You magnificent bastard!");
-     };
-   
-
-
     setTimeout(function(){
         victoryScreen.remove();
-    },5000);
-
-    
-
+    }, 5000);
 }
 
+
 //if local score is  lower than top score, replace top score with local score, then save into local storage
-
-
 //find out how to  save new least moves into localstorage
 
 
-//added victory css class, allFlipped function, endgame function and  victory screen + alert, matchcounter
