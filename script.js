@@ -11,18 +11,18 @@ victoryScreen.classList.add("victory");
 victoryScreen.innerText = "VICTORY!";
 var gameContainer = document.querySelector(".memory_game");
 var topScore = document.querySelector(".topscore");
-var topScoreAsNumber = Number(topScore.innerText);
-console.log(topScore.innerText);
 
-window.onload = function() {
-    // var localStorageTopScore = window.localStorage.getItem("topscore");
-    // console.log(localStorageTopScore);
-    // if (localStorageTopScore !== null) {
-    //     topScore.innerText = localStorageTopScore;
-    // } else {
-    //     topScore.innerText = 200;
-    // }
-};
+//local storage - doesn't work yet
+
+// window.onload = function() {
+//     // var localStorageTopScore = window.localStorage.getItem("topscore");
+//     // console.log(localStorageTopScore);
+//     // if (localStorageTopScore !== null) {
+//     //     topScore.innerText = localStorageTopScore;
+//     // } else {
+//     //     topScore.innerText = 200;
+//     // }
+// };
 
 
 //flip card section
@@ -129,15 +129,18 @@ var allFlipped = function() {
 };
 
 
+
 function newHiScore() {
-    // var topScoreNewHiScore = topScore;
-     var topScoreNewHiScore = topScoreAsNumber
-    if (currentScore < topScoreNewHiScore)  {
-        topScore.innerText = currentScore;
-       
+   var currentHiScoreAsNumber = Number(topScore.innerText);
+   var isLowerThanTopScore = currentScore < currentHiScoreAsNumber;
+   //console.log(isLowerThanTopScore);
+
+    if (isLowerThanTopScore) {
+        topScore.innerText = Number(currentScore);
          alert("NEW HIGH SCORE! you helped Mr. Cage in only " + currentScore + " Moves! You magnificent bastard!");
       };
 }
+
 
 
 
@@ -146,7 +149,7 @@ function endGame() {
     setTimeout(function() {
         alert("YOU DID IT! Nicolas Cage has regained his memories. He's now making sequels to Raising Arizona, Con-Air and FACE/OFF. ");
         newHiScore();
-        window.localStorage.setItem("topscore", topScoreAsNumber);
+      //  window.localStorage.setItem("topscore", topScoreAsNumber);
         
     }, 500);
 
@@ -158,7 +161,6 @@ function endGame() {
 }
 
 
-//if local score is  lower than top score, replace top score with local score, then save into local storage
-//find out how to  save new least moves into localstorage
+
 
 
